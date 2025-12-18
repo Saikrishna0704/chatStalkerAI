@@ -14,7 +14,7 @@ def get_friendly_error(error_str: str) -> str:
     error_lower = error_str.lower()
     
     if "quota" in error_lower or "limit" in error_lower or "exhausted" in error_lower or "rate" in error_lower or "429" in error_lower:
-        return "😭 The dev is broke! Wanna donate some API credits or compute? 💸 Try again in a minute!"
+        return "💀 Bruh... the dev who made this is BROKE broke! Like, instant-noodles-for-dinner broke. 🍜 Wanna Venmo some API credits? No? Okay, just wait a minute and try again. 😭💸"
     
     return "😅 Couldn't get a response right now. Please try again in a moment!"
 
