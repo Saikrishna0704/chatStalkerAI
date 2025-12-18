@@ -9,6 +9,16 @@ from typing import List, Tuple, Optional
 import google.generativeai as genai
 
 
+def get_friendly_error(error_str: str) -> str:
+    """Return a simple user-friendly message - no technical details."""
+    error_lower = error_str.lower()
+    
+    if "quota" in error_lower or "limit" in error_lower or "exhausted" in error_lower or "rate" in error_lower or "429" in error_lower:
+        return "😭 The dev is broke! Wanna donate some API credits or compute? 💸 Try again in a minute!"
+    
+    return "😅 Couldn't get a response right now. Please try again in a moment!"
+
+
 class ChatRAG:
     """RAG system for WhatsApp chat analysis using Gemini."""
     
@@ -121,7 +131,7 @@ YOUR RESPONSE:"""
             return response.text
             
         except Exception as e:
-            return f"Error generating response: {str(e)}"
+            return get_friendly_error(str(e))
     
     def get_summary(self) -> str:
         """Get a fun summary of the chat."""
@@ -152,5 +162,4 @@ Keep it fun and engaging! Use emojis."""
             return response.text
             
         except Exception as e:
-            return f"Error generating summary: {str(e)}"
-
+            return get_friendly_error(str(e))
